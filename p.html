@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #calculator {
+            width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            width: 60px;
+            height: 30px;
+            margin: 5px;
+            float: left;
+            background-color: #fafafa;
+            color: #000000;
+            border: 1px solid #9ba8b1;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #output {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <div id="calculator">
+        <div id="output"></div>
+
+        <div class="button" onclick="appendToOutput('MC')">MC</div>
+        <div class="button" onclick="appendToOutput('MR')">MR</div>
+        <div class="button" onclick="appendToOutput('M+')">M+</div>
+        <div class="button" onclick="appendToOutput('M-')">M-</div>
+        <div class="button" onclick="appendToOutput('MS')">MS</div>
+        <div class="button" onclick="appendToOutput('M^')">M^</div>
+        <div class="clear"></div>
+
+        <!-- Add the remaining buttons accordingly -->
+        <div class="button" onclick="appendToOutput('7')">7</div>
+        <div class="button" onclick="appendToOutput('π')">π</div>
+        <div class="button" onclick="appendToOutput('e')">e</div>
+        <div class="button" onclick="appendToOutput('C')">C</div>
+        <div class="button" onclick="appendToOutput('DELETE')">DELETE</div>
+        <div class="clear"></div>
+
+        <div class="button" onclick="appendToOutput('x^2')">x^2</div>
+        <div class="button" onclick="appendToOutput('1/x')">1/x</div>
+        <div class="button" onclick="appendToOutput('|x|')">|x|</div>
+        <div class="button" onclick="appendToOutput('exp')">exp</div>
+        <div class="button" onclick="appendToOutput('mod')">mod</div>
+
+        <div class="clear"></div>
+
+        <div class="button" onclick="appendToOutput('7')">7</div>
+        <div class="button" onclick="appendToOutput('8')">8</div>
+        <div class="button" onclick="appendToOutput('9')">9</div>
+        <div class="button" onclick="appendToOutput('n!')">n!</div>
+        <div class="button" onclick="appendToOutput('/')">/</div>
+        <div class="clear"></div>
+
+        <div class="button" onclick="appendToOutput('x^y')">x^y</div>
+        <div class="button" onclick="appendToOutput('7')">7</div>
+        <div class="button" onclick="appendToOutput('8')">8</div>
+        <div class="button" onclick="appendToOutput('9')">9</div>
+        <div class="button" onclick="appendToOutput('*')">*</div>
+        <div class="clear"></div>
+
+        <div class="button" onclick="appendToOutput('10^x')">10^x</div>
+        <div class="button" onclick="appendToOutput('4')">4</div>
+        <div class="button" onclick="appendToOutput('5')">5</div>
+        <div class="button" onclick="appendToOutput('6')">6</div>
+        <div class="button" onclick="appendToOutput('-')">-</div>
+        <div class="clear"></div>
+
+        <div class="button" onclick="appendToOutput('log')">log</div>
+        <div class="button" onclick="appendToOutput('1')">1</div>
+        <div class="button" onclick="appendToOutput('2')">2</div>
+        <div class="button" onclick="appendToOutput('3')">3</div>
+        <div class="button" onclick="appendToOutput('+')">+</div>
+        <div class="clear"></div>
+
+        <div class="button" onclick="appendToOutput('ln')">ln</div>
+        <div class="button" onclick="appendToOutput('+/-')">+/-</div>
+        <div class="button" onclick="appendToOutput('0')">0</div>
+        <div class="button" onclick="appendToOutput('.')">.</div>
+        <div class="button" onclick="calculate()">=</div>
+        <div class="clear"></div>
+    </div>
+
+    <script>
+        function appendToOutput(value) {
+            document.getElementById('output').innerHTML += value;
+        }
+
+        function calculate() {
+            var output = document.getElementById('output').innerHTML;
+            var result = eval(output);
+            document.getElementById('output').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
