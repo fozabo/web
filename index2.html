@@ -69,7 +69,7 @@ background-color: #2980b9;
 clear: both;
 }
 
-#output {
+#display {
 width:95%;
 margin: 10px 0;
 padding: 10px;
@@ -81,7 +81,7 @@ border: 1px solid #ccc;
 </head>
 <body>
 <div id="calculator">
-<div id="output"></div>
+<input type="text" id="display" placeholder="0" readonly>
 
 <div class="button1 disabled" onclick="appendToOutput('MC')">MC</div>
 <div class="button1 disabled" onclick="appendToOutput('MR')">MR</div>
@@ -95,8 +95,8 @@ border: 1px solid #ccc;
 <div class="button" onclick="appendToOutput('2')">2nd</div>
 <div class="button" onclick="appendToOutput('π')">π</div>
 <div class="button" onclick="appendToOutput('e')">e</div>
-<div class="button" onclick="appendToOutput('C')">C</div>
-<div class="button" onclick="appendToOutput('DELETE')">DEL</div>
+<div class="button" onclick="clearDisplay('C')">C</div>
+<div class="button" onclick="clearDisplay('DELETE')">DEL</div>
 <div class="clear"></div>
 
 <div class="button" onclick="appendToOutput('x^2')">x^2</div>
@@ -108,8 +108,8 @@ border: 1px solid #ccc;
 <div class="clear"></div>
 
 <div class="button" onclick="appendToOutput('7')">√x</div>
-<div class="button" onclick="appendToOutput('(')">(</div>
-<div class="button" onclick="appendToOutput(')')">)</div>
+<div class="button" onclick="appendToOutput('')">(</div>
+<div class="button" onclick="appendToOutput('')">)</div>
 <div class="button" onclick="appendToOutput('n!')">n!</div>
 <div class="button" onclick="appendToOutput('/')">/</div>
 <div class="clear"></div>
@@ -139,20 +139,26 @@ border: 1px solid #ccc;
 <div class="button special-color" onclick="appendToOutput('+/-')">+/-</div>
 <div class="button special-color" onclick="appendToOutput('0')">0</div>
 <div class="button special-color" onclick="appendToOutput('.')">.</div>
-<div class="button equals" onclick="appendToOutput('=')">=</div>
+<div class="button equals" onclick="calculateResult('=')">=</div>
 <div class="clear"></div>
 </div>
 
 <script>
-function appendToOutput(value) {
-document.getElementById('output').innerHTML += value;
-}
+    function appendToOutput(value) {
+      document.getElementById('display').value += value;
+    }
 
-function calculate() {
-var output = document.getElementById('output').innerHTML;
-var result = eval(output);
-document.getElementById('output').innerHTML = result;
-}
-</script>
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculateResult() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
 </body>
 </html>
